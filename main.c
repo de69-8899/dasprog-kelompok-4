@@ -86,6 +86,63 @@ void resistorParalel() {
         printf("Tidak valid (semua resistor tak hingga).\n");
 }
 
+void desimalKeLain() {
+    int des, n, basis;
+    char hasil[65];
+    int idx;
+    char digit[] = "0123456789ABCDEF";
+
+    printf("--- Konversi Desimal ---\n");
+    printf("Masukkan bilangan desimal: ");
+    scanf("%d", &des);
+
+    if (des == 0) {
+        printf("Biner       : 0\n");
+        printf("Oktal       : 0\n");
+        printf("Heksadesimal: 0\n");
+        return;
+    }
+
+    //biner
+    n = des;
+    idx = 0;
+    basis = 2;
+    while (n > 0) {
+        hasil[idx++] = digit[n % basis];  
+        n /= basis;                       
+    }
+    printf("Biner       : ");
+    for (int i = idx - 1; i >= 0; i--)
+        printf("%c", hasil[i]);
+    printf("\n");
+
+    //oktal
+    n = des;
+    idx = 0;
+    basis = 8;
+    while (n > 0) {
+        hasil[idx++] = digit[n % basis];
+        n /= basis;
+    }
+    printf("Oktal       : ");
+    for (int i = idx - 1; i >= 0; i--)
+        printf("%c", hasil[i]);
+    printf("\n");
+
+    //heksa
+    n = des;
+    idx = 0;
+    basis = 16;
+    while (n > 0) {
+        hasil[idx++] = digit[n % basis];
+        n /= basis;
+    }
+    printf("Heksadesimal: ");
+    for (int i = idx - 1; i >= 0; i--)
+        printf("%c", hasil[i]);
+    printf("\n");
+}
+
 void oktalKeDesimal() {
     char okt[30];
     int des = 0;
