@@ -55,8 +55,11 @@ Program kita compile menggunakan gcc dari MSYS64 di Windows tapi karena program 
 ##  Author
 
 Program Studi Teknik Telekomunikasi, Institut Teknologi Sepuluh Nopember
+
 Muhammad Akbar Ramadhan  
+
 Sebastian Lukman
+
 Muhammad Husaini Ridwan
 
 ---
