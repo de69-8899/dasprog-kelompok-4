@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
+#include <ctype.h>
 
 void hukumOhm() {
     char pilih;
@@ -16,8 +17,8 @@ void hukumOhm() {
             printf("Masukkan arus (I) [Ampere]: ");
             scanf("%f", &I);
             printf("Masukkan hambatan (R) [Ohm]: ");
-            V = I * R;            scanf("%f", &R);
-
+            scanf("%f", &R);
+            V = I * R;
             printf("Tegangan (V) = %.2f Volt\n", V);
             break;
         case 'I':
@@ -70,7 +71,7 @@ void resistorSeri() {
 
 void resistorParalel() {
     int n;
-    float r, invTotal = 0;
+    float r, temp = 0;
     printf("--- Kalkulator Resistor Paralel ---\n");
     printf("Masukkan jumlah resistor: ");
     scanf("%d", &n);
@@ -78,14 +79,13 @@ void resistorParalel() {
         printf("Resistor %d (Ohm): ", i);
         scanf("%f", &r);
         if (r != 0)
-            invTotal += 1.0 / r;
+            temp += 1.0 / r;
     }
-    if (invTotal != 0)
-        printf("Total Hambatan Paralel = %.2f Ohm\n", 1.0 / invTotal);
+    if (temp != 0)
+        printf("Total Hambatan Paralel = %.2f Ohm\n", 1.0 / temp);
     else
         printf("Tidak valid (semua resistor tak hingga).\n");
 }
-
 void desimalKeLain() {
     int des, n, basis;
     char hasil[65];
@@ -143,26 +143,68 @@ void desimalKeLain() {
     printf("\n");
 }
 
+
+void binerKeDesimal() {
+    char bin[30];
+    int des = 0;
+    int posisi = 0;
+
+    printf("--- Konversi Biner ke Desimal ---\n");
+    printf("Masukkan bilangan biner: ");
+    scanf("%s", bin);
+
+    for (int i = strlen(bin) - 1; i >= 0; i--) {
+        int digit = bin[i] - '0';
+        des += digit * (1 << posisi);
+        posisi++;
+    }
+    printf("Desimal = %d\n", des);
+}
+
+
 void oktalKeDesimal() {
     char okt[30];
     int des = 0;
+    int posisi = 0;
+
     printf("--- Konversi Oktal ke Desimal ---\n");
     printf("Masukkan bilangan oktal: ");
     scanf("%s", okt);
-    sscanf(okt, "%o", &des);
+
+    for (int i = strlen(okt) - 1; i >= 0; i--) {
+        int digit = okt[i] - '0';
+        des += digit * (1 << (3 * posisi));
+        posisi++;
+    }
     printf("Desimal = %d\n", des);
 }
 
 void heksaKeDesimal() {
     char hex[30];
     int des = 0;
+    int posisi = 0;
+
     printf("--- Konversi Heksadesimal ke Desimal ---\n");
     printf("Masukkan bilangan heksadesimal: ");
     scanf("%s", hex);
-    sscanf(hex, "%x", &des);
+    for (int i = strlen(hex) - 1; i >= 0; i--) {
+        char c = toupper(hex[i]);
+        int digit;
+
+        if (c >= '0' && c <= '9') {
+            digit = c - '0';
+        } else if (c >= 'A' && c <= 'F') {
+            digit = c - 'A' + 10;
+        } else {
+            printf("Input tidak valid!\n");
+            return;
+        }
+        des += digit * (1 << (4 * posisi));
+        posisi++;
+    }
+
     printf("Desimal = %d\n", des);
 }
-
 
 int main() {
     int pilihan;
@@ -190,8 +232,8 @@ int main() {
             case 2: dayaListrik(); break;
             case 3: resistorSeri(); break;
             case 4: resistorParalel(); break;
-            // case 5: desimalKeLain(); break;
-            // case 6: binerKeDesimal(); break;
+            case 5: desimalKeLain(); break;
+            case 6: binerKeDesimal(); break;
             case 7: oktalKeDesimal(); break;
             case 8: heksaKeDesimal(); break;
             case 9: printf("Terima kasih telah menggunakan toolkit ini!\n"); break;
