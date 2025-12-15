@@ -28,6 +28,10 @@ Mendukung konversi antar sistem bilangan berikut:
 - Heksadesimal → Desimal
 
 ---
+## Screenshot
+![Alt Text!](docs/screenshot.png)
+
+---
 
 ### 3. Menu Interaktif
 - Menu utama berbasis angka
