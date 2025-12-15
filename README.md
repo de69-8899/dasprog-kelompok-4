@@ -32,6 +32,10 @@ Mendukung konversi antar sistem bilangan berikut:
 ![Alt Text!](docs/screenshot.png)
 
 ---
+## ScreenRecord
+![](docs/sr.mp4)
+
+---
 
 ### 3. Menu Interaktif
 - Menu utama berbasis angka
