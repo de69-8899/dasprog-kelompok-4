@@ -33,7 +33,7 @@ Mendukung konversi antar sistem bilangan berikut:
 
 ---
 ## ScreenRecord
-![video](https://de69-8899.github.io/dasprog-kelompok-4/#showcase)
+[video](https://de69-8899.github.io/dasprog-kelompok-4/#showcase)
 
 ---
 
