@@ -33,7 +33,7 @@ Mendukung konversi antar sistem bilangan berikut:
 
 ---
 ## ScreenRecord
-![](docs/sr.mp4)
+![video](docs/sr.mp4)
 
 ---
 
